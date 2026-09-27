@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Edible Treats — delicious snacks, small chops, home-style cooking and catering for celebrations and special occasions."
+  >
+
+  <title>Edible Treats | Deliciously Made</title>
+
+
+  <!-- Google Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    /* =====================================
+       GENERAL
+    ====================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+
+      color: #30251f;
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(214, 158, 76, 0.10),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 90% 35%,
+          rgba(126, 79, 45, 0.08),
+          transparent 28%
+        ),
+        #fffaf3;
+
+      line-height: 1.7;
+
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    /* =====================================
+       SIDE MENU
+    ====================================== */
+
+    .menu-button {
+
+      position: fixed;
+
+      top: 22px;
+      right: 22px;
+
+      z-index: 2000;
+
+      width: 52px;
+      height: 52px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: #4b2e20;
+
+      color: white;
+
+      font-size: 24px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 10px 25px rgba(62, 36, 20, 0.25);
+
+      transition: 0.3s ease;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+    }
+
+
+    .side-menu {
+
+      position: fixed;
+
+      top: 0;
+      right: -330px;
+
+      width: 310px;
+      height: 100vh;
+
+      z-index: 1500;
+
+      padding: 35px 28px;
+
+      background:
+        linear-gradient(
+          160deg,
+          #fffaf3,
+          #f7ead9
+        );
+
+      box-shadow:
+        -15px 0 40px rgba(54, 32, 20, 0.16);
+
+      transition: right 0.4s ease;
+
+      overflow-y: auto;
+    }
+
+
+    .side-menu.active {
+      right: 0;
+    }
+
+
+    .menu-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 45px;
+    }
+
+
+    .menu-logo {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 25px;
+
+      color: #4b2e20;
+    }
+
+
+    .close-menu {
+
+      border: none;
+
+      background: transparent;
+
+      font-size: 28px;
+
+      color: #4b2e20;
+
+      cursor: pointer;
+    }
+
+
+    .side-menu ul {
+      list-style: none;
+    }
+
+
+    .side-menu li {
+      margin-bottom: 8px;
+    }
+
+
+    .side-menu a {
+
+      display: block;
+
+      padding: 13px 15px;
+
+      border-radius: 12px;
+
+      color: #4b2e20;
+
+      font-weight: 600;
+
+      transition: 0.25s ease;
+    }
+
+
+    .side-menu a:hover {
+
+      background: #ead1ae;
+
+      transform: translateX(4px);
+    }
+
+
+    .menu-contact {
+
+      margin-top: 45px;
+
+      padding-top: 25px;
+
+      border-top: 1px solid rgba(75, 46, 32, 0.15);
+    }
+
+
+    .menu-contact p {
+
+      font-size: 13px;
+
+      color: #76675d;
+
+      margin-bottom: 5px;
+    }
+
+
+    .menu-contact strong {
+
+      color: #4b2e20;
+    }
+
+
+    /* =====================================
+       OVERLAY
+    ====================================== */
+
+    .overlay {
+
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(25, 15, 10, 0.45);
+
+      z-index: 1400;
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transition: 0.3s ease;
+    }
+
+
+    .overlay.active {
+
+      opacity: 1;
+
+      visibility: visible;
+    }
+
+
+    /* =====================================
+       HERO
+    ====================================== */
+
+    .hero {
+
+      position: relative;
+
+      min-height: 90vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 100px 22px 80px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(255,255,255,0.13),
+          transparent 20%
+        ),
+        radial-gradient(
+          circle at 85% 75%,
+          rgba(220,170,90,0.20),
+          transparent 25%
+        ),
+        linear-gradient(
+          135deg,
+          #392117,
+          #674126 52%,
+          #9a6939
+        );
+
+      color: white;
+    }
+
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.06);
+
+      top: -120px;
+      left: -100px;
+    }
+
+
+    .hero::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      border-radius: 50%;
+
+      background: rgba(255,220,160,0.10);
+
+      bottom: -100px;
+      right: -80px;
+    }
+
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 800px;
+    }
+
+
+    .hero-small {
+
+      display: inline-block;
+
+      padding: 8px 17px;
+
+      margin-bottom: 20px;
+
+      border-radius: 30px;
+
+      background: rgba(255,255,255,0.12);
+
+      border: 1px solid rgba(255,255,255,0.20);
+
+      font-size: 13px;
+
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+    }
+
+
+    .hero h1 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(52px, 12vw, 88px);
+
+      line-height: 1.05;
+
+      margin-bottom: 20px;
+    }
+
+
+    .hero h1 span {
+
+      color: #f3d29b;
+    }
+
+
+    .hero p {
+
+      max-width: 680px;
+
+      margin: auto;
+
+      font-size: 18px;
+
+      color: rgba(255,255,255,0.88);
+    }
+
+
+    .hero-button {
+
+      display: inline-block;
+
+      margin-top: 35px;
+
+      padding: 16px 34px;
+
+      border-radius: 50px;
+
+      background: #f4c878;
+
+      color: #3c2417;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 12px 30px rgba(0,0,0,0.18);
+
+      transition: 0.3s ease;
+    }
+
+
+    .hero-button:hover {
+
+      transform: translateY(-4px);
+
+      background: #ffe0a5;
+    }
+
+
+    /* =====================================
+       SECTIONS
+    ====================================== */
+
+    section {
+
+      max-width: 1050px;
+
+      margin: 75px auto;
+
+      padding: 60px 45px;
+
+      border-radius: 30px;
+
+      background: rgba(255,255,255,0.82);
+
+      border: 1px solid rgba(112,72,39,0.08);
+
+      box-shadow:
+        0 18px 50px rgba(82, 51, 30, 0.08);
+    }
+
+
+    .section-label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #9a6939;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+
+    section h2 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(34px, 6vw, 48px);
+
+      line-height: 1.2;
+
+      color: #4b2e20;
+
+      margin-bottom: 25px;
+    }
+
+
+    section h2::after {
+
+      content: "";
+
+      display: block;
+
+      width: 55px;
+      height: 4px;
+
+      margin-top: 12px;
+
+      border-radius: 20px;
+
+      background: #c58a43;
+    }
+
+
+    .section-text {
+
+      max-width: 780px;
+
+      color: #655950;
+
+      font-size: 17px;
+    }
+
+
+    /* =====================================
+       ABOUT
+    ====================================== */
+
+    .about {
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #f8eee1
+        );
+    }
+
+
+    /* =====================================
+       WHAT WE OFFER
+    ====================================== */
+
+    .offer-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 22px;
+
+      margin-top: 35px;
+    }
+
+
+    .offer-card {
+
+      padding: 30px;
+
+      border-radius: 22px;
+
+      background: #fffaf4;
+
+      border: 1px solid rgba(151,100,53,0.10);
+
+      transition: 0.3s ease;
+    }
+
+
+    .offer-card:hover {
+
+      transform: translateY(-7px);
+
+      box-shadow:
+        0 15px 35px rgba(83, 50, 28, 0.10);
+    }
+
+
+    .offer-icon {
+
+      font-size: 35px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .offer-card h3 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 23px;
+
+      color: #4b2e20;
+
+      margin-bottom: 10px;
+    }
+
+
+    .offer-card p {
+
+      color: #71645c;
+
+      font-size: 15px;
+    }
+
+
+    /* =====================================
+       MENU
+    ====================================== */
+
+    .menu-section {
+
+      background:
+        linear-gradient(
+          135deg,
+          #4a2c1d,
+          #684329
+        );
+
+      color: white;
+    }
+
+
+    .menu-section h2 {
+
+      color: white;
+    }
+
+
+    .menu-section h2::after {
+
+      background: #f1c477;
+    }
+
+
+    .menu-intro {
+
+      color: rgba(255,255,255,0.82);
+
+      margin-bottom: 30px;
+    }
+
+
+    .menu-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 16px;
+    }
+
+
+    .menu-item {
+
+      padding: 22px;
+
+      border-radius: 18px;
+
+      background: rgba(255,255,255,0.09);
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      transition: 0.3s ease;
+    }
+
+
+    .menu-item:hover {
+
+      background: rgba(255,255,255,0.15);
+
+      transform: translateY(-4px);
+    }
+
+
+    .menu-item h3 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 21px;
+
+      color: #f8d89f;
+
+      margin-bottom: 6px;
+    }
+
+
+    .menu-item p {
+
+      color: rgba(255,255,255,0.75);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================
+       CATERING
+    ====================================== */
+
+    .catering {
+
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(198,139,67,0.12),
+          transparent 25%
+        ),
+        #fffaf3;
+    }
+
+
+    .occasion-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 15px;
+
+      margin-top: 35px;
+    }
+
+
+    .occasion {
+
+      padding: 25px 15px;
+
+      text-align: center;
+
+      border-radius: 20px;
+
+      background: #f8ecdd;
+
+      border: 1px solid rgba(151,100,53,0.08);
+
+      transition: 0.3s ease;
+    }
+
+
+    .occasion:hover {
+
+      transform: translateY(-5px);
+
+      background: #f4e2ca;
+    }
+
+
+    .occasion-icon {
+
+      font-size: 30px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .occasion h3 {
+
+      font-size: 16px;
+
+      color: #4b2e20;
+    }
+
+
+    .catering-message {
+
+      margin-top: 35px;
+
+      padding: 25px;
+
+      border-left: 4px solid #c58a43;
+
+      background: #fff;
+
+      border-radius: 0 15px 15px 0;
+
+      color: #655950;
+
+      font-style: italic;
+    }
+
+
+    /* =====================================
+       ORDER
+    ====================================== */
+
+    .order {
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff0d5,
+          #f8e4ca
+        );
+    }
+
+
+    .order h2::after {
+
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    .order p {
+
+      max-width: 650px;
+
+      margin: auto;
+
+      color: #655950;
+    }
+
+
+    .phone-number {
+
+      display: block;
+
+      margin-top: 18px;
+
+      font-weight: 700;
+
+      color: #4b2e20;
+
+      font-size: 18px;
+    }
+
+
+    .whatsapp-button {
+
+      display: inline-block;
+
+      margin-top: 25px;
+
+      padding: 16px 35px;
+
+      border-radius: 50px;
+
+      background: #4b2e20;
+
+      color: white;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 12px 25px rgba(75,46,32,0.20);
+
+      transition: 0.3s ease;
+    }
+
+
+    .whatsapp-button:hover {
+
+      transform: translateY(-4px);
+
+      background: #65402d;
+    }
+
+
+    /* =====================================
+       FOOTER
+    ====================================== */
+
+    footer {
+
+      padding: 45px 20px;
+
+      text-align: center;
+
+      background: #302016;
+
+      color: rgba(255,255,255,0.70);
+    }
+
+
+    footer strong {
+
+      display: block;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 25px;
+
+      color: white;
+
+      margin-bottom: 6px;
+    }
+
+
+    /* =====================================
+       MOBILE
+    ====================================== */
+
+    @media (max-width: 750px) {
+
+      .hero {
+
+        min-height: 85vh;
+
+        padding: 100px 20px 70px;
+      }
+
+
+      .hero p {
+
+        font-size: 16px;
+      }
+
+
+      section {
+
+        margin: 40px 15px;
+
+        padding: 38px 24px;
+
+        border-radius: 24px;
+      }
+
+
+      .offer-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .menu-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .occasion-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .side-menu {
+
+        width: 290px;
+
+        right: -310px;
+      }
+
+    }
+
+
+    @media (max-width: 400px) {
+
+      .menu-button {
+
+        top: 15px;
+        right: 15px;
+
+        width: 48px;
+        height: 48px;
+      }
+
+
+      .occasion-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      section {
+
+        padding: 32px 20px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================
+       MENU BUTTON
+  ====================================== -->
+
+  <button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Open menu"
+  >
+    ☰
+  </button>
+
+
+  <!-- =====================================
+       SIDE MENU
+  ====================================== -->
+
+  <aside
+    class="side-menu"
+    id="sideMenu"
+  >
+
+    <div class="menu-header">
+
+      <div class="menu-logo">
+        Edible Treats
+      </div>
+
+      <button
+        class="close-menu"
+        id="closeMenu"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <ul>
+
+      <li>
+        <a href="#home">🏠 Home</a>
+      </li>
+
+      <li>
+        <a href="#about">❤️ About Us</a>
+      </li>
+
+      <li>
+        <a href="#offer">🍽️ What We Offer</a>
+      </li>
+
+      <li>
+        <a href="#menu">🥟 Our Menu</a>
+      </li>
+
+      <li>
+        <a href="#catering">🎉 Catering</a>
+      </li>
+
+      <li>
+        <a href="#order">📞 Order Now</a>
+      </li>
+
+    </ul>
+
+
+    <div class="menu-contact">
+
+      <p>For orders & enquiries</p>
+
+      <strong>
+        08116776729
+      </strong>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================
+       OVERLAY
+  ====================================== -->
+
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
+
+
+  <!-- =====================================
+       HERO
+  ====================================== -->
+
+  <header
+    class="hero"
+    id="home"
+  >
+
+    <div class="hero-content">
+
+      <span class="hero-small">
+        Snacks • Small Chops • Catering
+      </span>
+
+
+      <h1>
+        Edible <span>Treats</span>
+      </h1>
+
+
+      <p>
+
+        Delicious bites, beautifully made, with the
+        familiar warmth of food made to be shared.
+
+      </p>
+
+
+      <a
+        href="#order"
+        class="hero-button"
+      >
+        ORDER NOW
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================
+       ABOUT
+  ====================================== -->
+
+  <section
+    class="about"
+    id="about"
+  >
+
+    <span class="section-label">
+      About Us
+    </span>
+
+
+    <h2>
+      Made with care. Served with love.
+    </h2>
+
+
+    <p class="section-text">
+
+      At Edible Treats, we believe good food is more than
+      just something to eat — it is part of how we connect,
+      celebrate and create memories.
+
+      <br><br>
+
+      From the crispy crunch of samosa and spring rolls
+      to soft puff-puff, tasty buns and well-seasoned
+      peppered meat, these are the kinds of treats many
+      of us grew up enjoying and continue to love.
+
+      <br><br>
+
+      Our love for food goes beyond snacks. We also prepare
+      <strong>home-style Nigerian meals and catering</strong>
+      for everyday enjoyment, family gatherings,
+      celebrations and special occasions.
+
+      <br><br>
+
+      Edible Treats brings together the familiar flavours
+      we love with the care and warmth of food made for people.
+
+    </p>
+
+  </section>
+
+
+  <!-- =====================================
+       WHAT WE OFFER
+  ====================================== -->
+
+  <section id="offer">
+
+    <span class="section-label">
+      What We Offer
+    </span>
+
+
+    <h2>
+      Something delicious for every moment.
+    </h2>
+
+
+    <div class="offer-grid">
+
+
+      <div class="offer-card">
+
+        <div class="offer-icon">
+          🥟
+        </div>
+
+        <h3>
+          Snacks & Small Chops
+        </h3>
+
+        <p>
+          Delicious favourites made for everyday
+          enjoyment, sharing and celebrations.
+        </p>
+
+      </div>
+
+
+      <div class="offer-card">
+
+        <div class="offer-icon">
+          🍽️
+        </div>
+
+        <h3>
+          Home-style Cooking
+        </h3>
+
+        <p>
+          Comforting Nigerian meals prepared with
+          care for everyday meals and special moments.
+        </p>
+
+      </div>
+
+
+      <div class="offer-card">
+
+        <div class="offer-icon">
+          🎉
+        </div>
+
+        <h3>
+          Catering
+        </h3>
+
+        <p>
+          Thoughtfully prepared food and treats for
+          gatherings, celebrations and special occasions.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       MENU
+  ====================================== -->
+
+  <section
+    class="menu-section"
+    id="menu"
+  >
+
+    <span class="section-label">
+      Our Menu
+    </span>
+
+
+    <h2>
+      Favourites you'll love.
+    </h2>
+
+
+    <p class="menu-intro">
+
+      From familiar Nigerian favourites to delicious
+      treats for sharing, there's something for
+      every craving and occasion.
+
+    </p>
+
+
+    <div class="menu-grid">
+
+
+      <div class="menu-item">
+
+        <h3>
+          Samosa
+        </h3>
+
+        <p>
+          Crispy, flavourful and perfect for sharing.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <h3>
+          Spring Rolls
+        </h3>
+
+        <p>
+          Deliciously crispy and satisfying.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <h3>
+          Puff-Puff
+        </h3>
+
+        <p>
+          Soft, golden and made to be enjoyed.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <h3>
+          Buns
+        </h3>
+
+        <p>
+          A tasty favourite for any occasion.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <h3>
+          Peppered Meat
+        </h3>
+
+        <p>
+          Well-seasoned and full of flavour.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <h3>
+          Home-style Cooking
+        </h3>
+
+        <p>
+          Comforting meals prepared with care.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       CATERING
+  ====================================== -->
+
+  <section
+    class="catering"
+    id="catering"
+  >
+
+    <span class="section-label">
+      Catering
+    </span>
+
+
+    <h2>
+      Made for celebrations. Made for sharing.
+    </h2>
+
+
+    <p class="section-text">
+
+      Whether it's a birthday, wedding, graduation,
+      church gathering, family celebration or a special
+      event, Edible Treats brings delicious food and
+      treats to the table.
+
+    </p>
+
+
+    <div class="occasion-grid">
+
+
+      <div class="occasion">
+
+        <div class="occasion-icon">
+          🎂
+        </div>
+
+        <h3>
+          Birthdays
+        </h3>
+
+      </div>
+
+
+      <div class="occasion">
+
+        <div class="occasion-icon">
+          🎓
+        </div>
+
+        <h3>
+          Graduations
+        </h3>
+
+      </div>
+
+
+      <div class="occasion">
+
+        <div class="occasion-icon">
+          ⛪
+        </div>
+
+        <h3>
+          Gatherings
+        </h3>
+
+      </div>
+
+
+      <div class="occasion">
+
+        <div class="occasion-icon">
+          🎉
+        </div>
+
+        <h3>
+          Special Occasions
+        </h3>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="catering-message">
+
+      Big occasion or small gathering, there's always
+      room for good food.
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================
+       ORDER
+  ====================================== -->
+
+  <section
+    class="order"
+    id="order"
+  >
+
+    <span class="section-label">
+      Contact
+    </span>
+
+
+    <h2>
+      Ready to order?
+    </h2>
+
+
+    <p>
+
+      Send Edible Treats a message on WhatsApp
+      to place an order or make an enquiry.
+
+    </p>
+
+
+    <span class="phone-number">
+      08116776729
+    </span>
+
+
+    <a
+      class="whatsapp-button"
+      href="https://wa.me/2348116776729?text=Hello%20Edible%20Treats!%20I'd%20like%20to%20make%20an%20order."
+      target="_blank"
+    >
+
+      💬 ORDER ON WHATSAPP
+
+    </a>
+
+  </section>
+
+
+  <!-- =====================================
+       FOOTER
+  ====================================== -->
+
+  <footer>
+
+    <strong>
+      Edible Treats
+    </strong>
+
+
+    <p>
+      Delicious bites • Home-style Cooking • Catering
+    </p>
+
+
+    <p>
+      © 2026 Edible Treats. All rights reserved.
+    </p>
+
+  </footer>
+
+
+  <!-- =====================================
+       JAVASCRIPT
+  ====================================== -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const closeMenu =
+      document.getElementById("closeMenu");
+
+    const sideMenu =
+      document.getElementById("sideMenu");
+
+    const overlay =
+      document.getElementById("overlay");
+
+
+    function openMenu() {
+
+      sideMenu.classList.add("active");
+
+      overlay.classList.add("active");
+
+    }
+
+
+    function closeSideMenu() {
+
+      sideMenu.classList.remove("active");
+
+      overlay.classList.remove("active");
+
+    }
+
+
+    menuButton.addEventListener(
+      "click",
+      openMenu
+    );
+
+
+    closeMenu.addEventListener(
+      "click",
+      closeSideMenu
+    );
+
+
+    overlay.addEventListener(
+      "click",
+      closeSideMenu
+    );
+
+
+    const menuLinks =
+      document.querySelectorAll(
+        ".side-menu a"
+      );
+
+
+    menuLinks.forEach(function(link) {
+
+      link.addEventListener(
+        "click",
+        closeSideMenu
+      );
+
+    });
+
+  </script>
+
+
+</body>
+
+  </html>
